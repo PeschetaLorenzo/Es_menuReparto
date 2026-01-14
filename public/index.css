@@ -1,0 +1,97 @@
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90vh;
+    width: 100vw;
+}
+
+#checkbox{
+    height: 20px;
+    width: 20px;
+    border: 1pt solid black;
+    text-align: center;
+    font-weight: bold;
+}
+
+.ingrediente{
+    display: flex;
+    flex-direction: row;
+    >div{
+        width: 280px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-left: 5%;
+        
+        >label{
+            margin-left: 10px;
+        }
+    }
+    
+
+}
+
+img{
+    width: 250px;
+    height: 150px;
+    border-image-slice: fill;
+    margin-right: 5px;
+
+}
+
+#check-Veggie{
+    margin-left: 40%;
+    >label{
+            margin-left: 10px;
+        }
+}
+
+header{
+    text-align: center;
+}
+
+
+#contorno, #hotdog{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    
+}
+
+#contorno{
+    display: none;
+    text-align: center;
+    justify-content:flex-start;
+
+    
+    >.ingrediente{
+        margin-top: 100px;
+    }
+}
+
+#btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    >button{
+        height: 50px;
+    }
+}
+#indietro, #avanti{
+    width: 50px;
+}
+#indietro, #conferma{
+    visibility: hidden;
+}
+
+footer{
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
