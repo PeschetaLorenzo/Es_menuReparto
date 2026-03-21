@@ -1,3 +1,4 @@
+<!--
 <?php
 
 // 🔧 CONFIGURAZIONE SERVER DI DESTINAZIONE
@@ -79,3 +80,5 @@ function formatHeaders($headers) {
     }
     return $out;
 }
+
+-->
