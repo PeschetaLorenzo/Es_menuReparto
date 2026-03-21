@@ -1,6 +1,6 @@
-<!--
-<?php
 
+<?php
+/*
 // 🔧 CONFIGURAZIONE SERVER DI DESTINAZIONE
 $TARGET_SERVER = "http://192.168.1.188:8081";
 
@@ -81,4 +81,4 @@ function formatHeaders($headers) {
     return $out;
 }
 
--->
+*/
