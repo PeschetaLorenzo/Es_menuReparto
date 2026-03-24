@@ -1,0 +1,181 @@
+<header>
+    <h1>Componi il tuo HotDog!</h1>
+</header>
+<main>
+    <section id="hotdog" #hotdog>
+      <header>HOT DOG</header>
+        <div class="form-check form-switch ingrediente" id="check-Pane">
+            <div>
+                <div>
+                    <input class="form-check-input" type="checkbox" id="swtPane" [(ngModel)]="swtPane">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Hot dog</label>
+                </div>
+            </div>
+            <img src="img/PaneSup.png" [ngClass]="{'filter': !swtPane, 'noFilter': swtPane}">
+        </div>
+
+        <div class="form-check form-switch ingrediente" id="check-Pane">
+            <div>
+                <div>
+                    <input class="form-check-input" type="checkbox" [(ngModel)]="swtKetchup" [disabled]="!swtPane">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Ketcuhp</label>
+                </div>
+            </div>
+            <img src="img/Ketchup.png" [ngClass]="{'filter': !swtPane, 'noFilter': swtPane, 'invisible': !swtKetchup}">
+        </div>
+        <div class="form-check form-switch ingrediente" id="check-Pane">
+            <div>
+                <div>
+                    <input class="form-check-input" type="checkbox" [(ngModel)]="swtMaionese" [disabled]="!swtPane">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Maionese</label>
+                </div>
+            </div>
+            <img src="img/Salsiccia.png" #img_salsiccia [ngClass]="{'filter': !swtPane, 'noFilter': swtPane}" >
+        </div>
+
+        <div class="form-check form-switch ingrediente" id="check-Salsiccia">
+            <div id="div_sals">
+                <div>
+                    <input class="form-check-input" type="checkbox" id="swtVeggie" [(ngModel)]="swtVeggie" (click)="swtVeggie_Click()" [disabled]="!swtPane">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Vegetariano</label>
+                </div>
+            </div>
+            <img src="img/Maionese.png" [ngClass]="{'filter': !swtPane, 'noFilter': swtPane, 'invisible': !swtMaionese}" >
+        </div>
+        <div class="form-check form-switch ingrediente" id="">
+            <div>
+              <div></div>
+            </div>
+            <img src="img/PaneInf.png" id="img_paneInf" [ngClass]="{'filter': !swtPane, 'noFilter': swtPane}">
+        </div>
+
+    </section>
+
+    <section id="contorno" #contorno>
+        <div class="form-check form-switch ingrediente" id="check-Patatine">
+            <div>
+                <div>
+                    <input class="form-check-input" type="checkbox" [(ngModel)]="swtPatatine">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Patatine</label>
+                </div>
+            </div>
+            <img src="img/Patatine.png" alt="" id="img_patatine" [ngClass]="{'filter': !swtPatatine}">
+        </div>
+        <div class="form-check form-switch ingrediente" id="check-Peperoni">
+            <div>
+                <div>
+                    <input class="form-check-input" type="checkbox" [(ngModel)]="swtPeperoni">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Peperoni</label>
+                </div>
+            </div>
+            <img src="img/Peperoni.png" alt="" [ngClass]="{'filter': !swtPeperoni}">
+        </div>
+    </section>
+
+    <section id="dolce" #dolce>
+        <header>PANCAKE</header>
+        <div class="form-check form-switch ingrediente" id="check-Pane">
+            <div>
+                <div>
+                    <input class="form-check-input" type="checkbox" id="swtPancake" [(ngModel)]="swtPancake">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Pancake</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-check form-switch ingrediente" id="check-Salsiccia">
+            <div id="div_topping">
+                <div>
+                    <input class="form-check-input" type="checkbox" [(ngModel)]="swtNutella" (click)="toggleTopping()" [disabled]="!swtPancake">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Nutella</label>
+                </div>
+                <div>
+                    <input class="form-check-input" type="checkbox" [(ngModel)]="swtMarmellata" (click)="toggleTopping()" [disabled]="!swtPancake">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Marmellata</label>
+                </div>
+                <img src="img/PancakeNutella.png" id="img_pancake" #img_pancake [ngClass]="{'filter': !swtPancake}">
+            </div>
+          </div>
+
+    </section>
+
+
+</main>
+<footer>
+    <section id="btn">
+        <button class="btn btn-primary" id="indietro" #indietro (click)="prevPage()"><span class="material-symbols-outlined">arrow_back_ios</span></button>
+        <button class="btn btn-primary" id="conferma" #conferma (click)="apriConferma()">CONFERMA</button>
+        <button class="btn btn-primary" id="avanti" #avanti (click)="nextPage()"><span class="material-symbols-outlined">arrow_forward_ios</span></button>
+    </section>
+</footer>
+
+<div id="confermaModal" #modal>
+    <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h3>RIEPILOGO ORDINE</h3>
+    <div>
+      @if(swtPane)
+      {
+        <h4>HOTDOG</h4>
+        @if(!swtKetchup)
+        {
+          <p style="color: red; font-weight: bold;">NO KETCHUP</p>
+        }
+
+        @if(!swtMaionese)
+        {
+          <p style="color: red; font-weight: bold;">NO MAIONESE</p>
+        }
+
+        @if(swtVeggie)
+        {
+          <p style="color: green; font-weight: bold;">VEGETARIANO</p>
+        }
+      }
+      @else {
+        <h4 style="color: red; font-weight: bold;">NO HOTDOG:</h4>
+      }
+    </div>
+    <br>
+    <div>
+      @if(swtPatatine || swtPeperoni)
+      {
+        <h4>CONTORNO</h4>
+        @if(swtPatatine)
+        {
+          <p style="font-weight: bold;">PATATINE</p>
+        }
+
+        @if(swtPeperoni)
+        {
+          <p style="font-weight: bold;">PEPERONI</p>
+        }
+      }
+      @else {
+        <h4 style="color: red; font-weight: bold;">NO CONTORNO</h4>
+      }
+    </div>
+    <br>
+    <div>
+      @if(swtPancake)
+      {
+        <h4>DOLCE:</h4>
+        @if(swtNutella)
+        {
+          <p style="font-weight: bold;">NUTELLA</p>
+        }
+        @else if(swtMarmellata)
+        {
+          <p style="font-weight: bold;">MARMELLATA</p>
+        }
+      }
+      @else {
+        <h4 style="color: red; font-weight: bold;">NO DOLCE</h4>
+      }
+    </div>
+
+    <div>
+      <button class="btn btn-primary" (click)="inviaOrdine()">CONFERMA</button>
+    </div>
+  </div>
+</div>

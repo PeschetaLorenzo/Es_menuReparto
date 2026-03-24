@@ -1,0 +1,147 @@
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90vh;
+    width: 100vw;
+}
+
+#checkbox{
+    height: 20px;
+    width: 20px;
+    border: 1pt solid black;
+    text-align: center;
+    font-weight: bold;
+}
+
+.ingrediente{
+    display: flex;
+    flex-direction: row;
+    >div{
+        width: 280px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-left: 5%;
+
+        >label{
+            margin-left: 10px;
+        }
+    }
+}
+
+img{
+    width: 250px;
+    height: 150px;
+    border-image-slice: fill;
+    margin-right: 5px;
+
+
+}
+
+#check-Veggie{
+    margin-left: 40%;
+    >label{
+            margin-left: 10px;
+        }
+}
+
+header{
+    text-align: center;
+}
+
+
+#contorno, #hotdog, #dolce{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#contorno, #dolce{
+    display: none;
+    text-align: center;
+    justify-content:flex-start;
+
+
+    >.ingrediente{
+        margin-top: 100px;
+    }
+}
+
+#btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    >button{
+        height: 50px;
+    }
+}
+#indietro, #avanti{
+    width: 50px;
+}
+#indietro, #conferma{
+    visibility: hidden;
+}
+
+footer{
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+
+
+.filter{
+  filter: grayscale(0.7);
+}
+
+.noFilter{
+  filter: grayscale(0);
+}
+
+#img_pancake{
+  height: 250px;
+}
+
+#confermaModal{
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  min-height: fit-content;
+}
+
+.close {
+  text-align: right;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
