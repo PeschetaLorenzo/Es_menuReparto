@@ -1,7 +1,7 @@
 <div>
   @if(login.includes('t') )
   {
-    <app-utente></app-utente>
+    <app-utente [idTavolo]="login"></app-utente>
   }
   @else if (login == 'cucina')
   {

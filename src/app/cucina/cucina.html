@@ -1,1 +1,83 @@
-<p>cucina works!</p>
+<div id="body">
+    <header>
+        <h1>Visualizzazione degli ordini</h1>
+    </header>
+    <main class="container">
+        <div class="row">
+            @for(ordine of ordini; track $index)
+            {
+              @if((!dolciVis && ordine.completatoPanino == '0') || (ordine.dolce == '1' && dolciVis))
+              {
+
+                <div class="col-6" (click)="ordineCompletato($event, ordine)">
+                  <div class="card bg-gradient mb-3" [ngClass]="{ 'bg-warning text-dark': (ordine.vegetariano == '0' && !dolciVis),
+                                                                  'bg-success text-light': (ordine.vegetariano == '1' && !dolciVis),
+                                                                  'bg-primary text-light': (dolciVis && ordine.topping == 'Nutella'),
+                                                                  'bg-info text-dark': (dolciVis && ordine.topping == 'Marmellata'),
+                                                                  'paper': (ordine.completatoPanino == '1' && !dolciVis) || ordine.ordineCompletato == '1' && dolciVis}"
+
+                                                                style="max-width: 12rem;">
+                    <span class="position-absolute top-0 start-50 translate-middle-x p-2 bg-danger rounded-circle">
+                        <span class="position-absolute top-50 start-50 translate-middle p-0 bg-dark border border-3 border-dark rounded-circle">
+                        </span>
+                    </span>
+                    <div class="card-header pt-3 fw-bold"><h5>Tavolo: {{(ordine.idTavolo).toUpperCase()}}</h5></div>
+                    @if(!dolciVis && ordine.completatoPanino == '0')
+                    {
+                      <div class="card-body">
+                        @if(ordine.hotdog == '1')
+                        {
+                          <h5 class="card-title">Hotdog</h5>
+                          <p class class="card-text">
+                            {{ordine.ketchup == '1' ? "": "NO ketchup "}}
+                            {{ordine.maionese == '1' ? "": "NO maionese"}}
+                          </p>
+                        }
+                        @else {
+                          <h5 class="card-title text-danger">NO Hotdog</h5>
+                        }
+                      </div>
+                      <div class="card-body">
+                        @if(ordine.patatine == '1' || ordine.peperoni == '1')
+                        {
+                          <h5 class="card-title">Contorno</h5>
+                          <p class="card-text">
+                            {{ordine.patatine ? "Patatine" : ""}}
+                            {{ordine.peperoni ? "Peperoni" : ""}}
+                          </p>
+                        }
+                        @else
+                        {
+                          <h5 class="card-title text-danger">NO Contorno</h5>
+                        }
+                      </div>
+                    }
+                    @else if (ordine.dolce == '1' && dolciVis) {
+                      <div class="card-body">
+                        <h5 class="card-title">Dolce</h5>
+                        <p class="card-text">
+                          {{ordine.topping}}
+                        </p>
+                      </div>
+                    }
+                  </div>
+                </div>
+              }
+            }
+        </div>
+
+    </main>
+    <footer>
+      <nav>
+        <li class="bg-warning" (click)="visDolci(false)">Hotdog</li>
+        <li class="bg-primary" (click)="visDolci(true)">Dolce</li>
+      </nav>
+    </footer>
+
+
+    <!--
+
+                ${ordine.nOrd > maxOr ? '<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">NEW<span class="visually-hidden">New alerts</span></span>': ''}</div>
+            `
+    -->
+</div>

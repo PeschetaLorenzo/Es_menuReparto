@@ -1,14 +1,23 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { NgClass, NgStyle } from '@angular/common';
+import { NgClass } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { DbService } from '../db-service';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-utente',
-  imports: [NgClass, FormsModule, NgStyle],
+  imports: [NgClass, FormsModule],
   templateUrl: './utente.html',
   styleUrl: './utente.css',
 })
 export class Utente implements AfterViewInit{
+  @Input() idTavolo:any;
+
+  constructor(private service: DbService){
+
+  }
+
+
   @ViewChild('indietro') indietro !: ElementRef;
   @ViewChild('conferma') conferma !: ElementRef;
   @ViewChild('avanti') avanti !: ElementRef;
@@ -27,7 +36,7 @@ export class Utente implements AfterViewInit{
   page:number = 1
 
   ngAfterViewInit() {
-    console.log(this.indietro);
+
   }
 
   prevPage(){
@@ -125,7 +134,20 @@ export class Utente implements AfterViewInit{
     this.modal.nativeElement.style.display = "none";
   }
 
-  inviaOrdine(){
+  async inviaOrdine(){
+    let ordine = {
+      hotdog: this.swtPane,
+      ketchup: this.swtKetchup,
+      maionese: this.swtMaionese,
+      vegetariano: this.swtVeggie,
+      patatine: this.swtPatatine,
+      peperoni: this.swtPeperoni,
+      dolce: this.swtPancake,
+      topping: this.swtNutella ? "Nutella" : "Marmellata"
+    }
+    if(this.swtPane || this.swtPeperoni || this.swtPatatine || this.swtPancake)
+      this.service.richiamaServer({action: "inviaOrdine" ,idTav: this.idTavolo, ordine: ordine})
+
     this.reset()
   }
 

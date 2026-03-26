@@ -7,7 +7,7 @@ import { Cassa } from './cassa/cassa';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Utente, Cucina, Cassa],
+  imports: [Utente, Cucina, Cassa],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
