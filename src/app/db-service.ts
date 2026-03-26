@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class DbService {
-  SERVER_URL = "http://peschetalorenzo.altervista.org/Reparto/index.php"
+  SERVER_URL = "https://peschetalorenzo.altervista.org/Reparto/index.php"
 
   async richiamaServer(parameter:{})
   {
