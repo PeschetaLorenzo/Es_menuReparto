@@ -31,8 +31,6 @@ export class Utente implements AfterViewInit{
 
   @ViewChild('modal') modal !: ElementRef;
 
-
-
   page:number = 1
 
   ngAfterViewInit() {
@@ -40,51 +38,14 @@ export class Utente implements AfterViewInit{
   }
 
   prevPage(){
-    if(this.page == 2)
-    {
-      //p1
-      this.hotdog.nativeElement.style.display = "flex"
-      this.contorno.nativeElement.style.display = "none"
-      this.dolce.nativeElement.style.display = "none"
-
-
-      this.indietro.nativeElement.style.visibility = 'hidden'
-    }
-    else if(this.page == 3)
-    {
-      //p2
-      this.hotdog.nativeElement.style.display = "none"
-      this.contorno.nativeElement.style.display = "flex"
-      this.dolce.nativeElement.style.display = "none"
-
-      this.avanti.nativeElement.style.visibility = 'visible'
-      this.conferma.nativeElement.style.visibility = 'hidden'
-
-    }
     this.page--
+    console.log(this.page)
+
   }
 
   nextPage(){
-    if(this.page == 1)
-    {
-      //p2
-      this.hotdog.nativeElement.style.display = "none"
-      this.contorno.nativeElement.style.display = "flex"
-      this.dolce.nativeElement.style.display = "none"
-
-      this.indietro.nativeElement.style.visibility = 'visible'
-    }
-    else if(this.page == 2)
-    {
-      //p3
-      this.hotdog.nativeElement.style.display = "none"
-      this.contorno.nativeElement.style.display = "none"
-      this.dolce.nativeElement.style.display = "flex"
-
-      this.avanti.nativeElement.style.visibility = 'hidden'
-      this.conferma.nativeElement.style.visibility = 'visible'
-    }
     this.page++
+    console.log(this.page)
   }
 
 
@@ -147,6 +108,8 @@ export class Utente implements AfterViewInit{
     }
     if(this.swtPane || this.swtPeperoni || this.swtPatatine || this.swtPancake)
       this.service.richiamaServer({action: "inviaOrdine" ,idTav: this.idTavolo, ordine: ordine})
+    else
+      alert("Impossibile inviare un ordine vuoto")
 
     this.reset()
   }
@@ -164,8 +127,7 @@ export class Utente implements AfterViewInit{
     this.swtNutella = true;
     this.swtMarmellata = false;
 
-    this.imgPancake.nativeElement.src = "img/PancakeNutella.png"
-    this.imgSalsiccia.nativeElement.src = "img/Salsiccia.png"
+    this.page = 1
 
     this.closeModal()
   }

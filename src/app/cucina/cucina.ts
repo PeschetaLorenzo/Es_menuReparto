@@ -11,6 +11,9 @@ import { NgClass } from '@angular/common';
 export class Cucina implements OnInit {
   maxOr:number = 0;
   ordini: any = []
+
+  dolciVis:boolean = false;
+
   constructor(private service:DbService)
   {}
 
@@ -21,11 +24,8 @@ export class Cucina implements OnInit {
 
   async getOrdini(){
     let result:any = await this.service.richiamaServer({action: "getOrdiniNoCompletato"})
-    console.log(result)
     this.ordini = result.ordini
   }
-
-  dolciVis:boolean = false;
 
   visDolci(visibility:boolean){
     this.dolciVis = visibility;
@@ -37,8 +37,13 @@ export class Cucina implements OnInit {
       this.service.richiamaServer({action: "completaOrdinePanino", idOr: ordine.idOrd});
     else
     {
-      if(ordine.completatoPanino == '1')
+      if(ordine.completatoPanino == '1' || ordine.dolce == '0')
+      {
+        if(ordine.dolce == '0')
+          this.service.richiamaServer({action: "completaOrdinePanino", idOr: ordine.idOrd});
+
         this.service.richiamaServer({action: "completaOrdine", idOr: ordine.idOrd});
+      }
       else
         alert('Completa prima il panino')
     }

@@ -9,7 +9,6 @@ export class DbService {
   async richiamaServer(parameter:{})
   {
 
-    console.log(parameter)
       const response = await fetch(
         this.SERVER_URL,
         {
@@ -22,7 +21,6 @@ export class DbService {
         }
       );
 
-      console.log(response)
 
       const data = await response.json();
 

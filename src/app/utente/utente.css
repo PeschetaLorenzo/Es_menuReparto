@@ -36,8 +36,6 @@ img{
     height: 150px;
     border-image-slice: fill;
     margin-right: 5px;
-
-
 }
 
 #check-Veggie{
@@ -61,7 +59,6 @@ header{
 }
 
 #contorno, #dolce{
-    display: none;
     text-align: center;
     justify-content:flex-start;
 
@@ -78,13 +75,21 @@ header{
     margin-bottom: 30px;
     >button{
         height: 50px;
+        visibility: hidden;
     }
 }
+
 #indietro, #avanti{
     width: 50px;
 }
-#indietro, #conferma{
-    visibility: hidden;
+
+
+.visible{
+  visibility: visible;
+}
+
+.invisible{
+  visibility: hidden;
 }
 
 footer{

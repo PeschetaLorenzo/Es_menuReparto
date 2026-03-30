@@ -21,7 +21,6 @@ export class App {
   ngOnInit() {
     this.route.queryParamMap.subscribe(params => {
       const tav = params.get('ut');
-      console.log(tav);
       if(tav)
         this.login = tav;
     });
