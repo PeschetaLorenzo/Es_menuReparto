@@ -9,7 +9,6 @@ import { NgClass } from '@angular/common';
   styleUrl: './cucina.css',
 })
 export class Cucina implements OnInit {
-  maxOr:number = 0;
   ordini: any = []
 
   dolciVis:boolean = false;

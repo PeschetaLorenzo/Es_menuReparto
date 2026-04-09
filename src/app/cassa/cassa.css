@@ -1,0 +1,398 @@
+/* Header */
+.cassa-header {
+  background: linear-gradient(135deg, #8140d6 0%, #764ba2 100%);
+  color: white;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  overflow: visible;
+}
+
+.cassa-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+/* Main container */
+.cassa-main {
+  padding: 20px;
+  position: relative;
+  overflow: visible;
+}
+
+/* Controls section */
+.controls-section {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  background: #f8f9fa;
+  padding: 15px 20px;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.tavolo-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tavolo-selector label {
+  font-weight: 600;
+  color: #333;
+}
+
+.tavolo-selector select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.tavolo-selector select:hover {
+  border-color: #667eea;
+}
+
+.tavolo-selector select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filters label {
+  font-weight: 600;
+  color: #333;
+  margin-right: 5px;
+}
+
+.filter-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  border: 2px solid #ddd;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  transition: all 0.3s;
+}
+
+.filter-btn:hover {
+  border-color: #667eea;
+  color: #667eea;
+}
+
+.filter-btn.active {
+  background: #667eea;
+  color: white;
+  border-color: #667eea;
+}
+
+.filter-btn.da-pagare {
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+}
+
+.filter-btn.da-pagare.active {
+  background: #ff6b6b;
+  border-color: #ff6b6b;
+  color: white;
+}
+
+.filter-btn.pagati {
+  border-color: #51cf66;
+  color: #51cf66;
+}
+
+.filter-btn.pagati.active {
+  background: #51cf66;
+  border-color: #51cf66;
+  color: white;
+}
+
+/* Table section */
+.table-section {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Table styling */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.table thead {
+  background: #f8f9fa;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.table th {
+  padding: 12px 15px;
+  text-align: center;
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+.table th.sortable {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s;
+}
+
+.table th.sortable:hover {
+  background-color: #e9ecef;
+  border-radius: 4px;
+}
+
+.sort-indicator {
+  font-size: 12px;
+  opacity: 0.4;
+  transition: opacity 0.2s, color 0.2s;
+}
+
+.sort-indicator.active {
+  opacity: 1;
+  color: #667eea;
+  font-weight: bold;
+}
+
+.table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #e9ecef;
+  color: #666;
+  font-size: 14px;
+  text-align: center;
+  align-items: center;
+}
+
+.table .idOrdine {
+
+  text-align: left;
+  align-items: start;
+}
+
+.table tbody tr {
+  transition: background-color 0.2s;
+}
+
+.table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.table tbody tr.pagato {
+  background-color: #f0fdf4;
+  opacity: 0.8;
+}
+
+.table tbody tr.pagato td {
+  color: #51cf66;
+}
+
+.table input[type="checkbox"] {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  accent-color: #667eea;
+}
+
+.table input[type="checkbox"]:hover {
+  transform: scale(1.1);
+}
+
+.table input[type="checkbox"][aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.9;
+}
+
+.table input[type="checkbox"]:disabled {
+  cursor: not-allowed;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+
+
+.btn-annulla {
+  background: #f0f0f0;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.btn-annulla:hover {
+  background: #e9e9e9;
+  border-color: #999;
+}
+
+.btn-conferma {
+  background: #51cf66;
+  color: white;
+  border: 1px solid #40c057;
+}
+
+.btn-conferma:hover {
+  background: #40c057;
+  border-color: #37b24d;
+}
+
+.btn-conferma:active {
+  transform: scale(0.98);
+}
+
+/* Modal con Bootstrap styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-out;
+  pointer-events: auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-dialog {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 90%;
+  animation: slideUp 0.3s ease-out;
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  padding: 24px 24px 16px;
+  border-bottom: 1px solid #e9ecef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 24px;
+  color: #999;
+  transition: color 0.2s;
+}
+
+.btn-close:hover {
+  color: #333;
+}
+
+.modal-body {
+  padding: 20px 24px;
+  color: #666;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.modal-body p {
+  margin: 0;
+}
+
+.modal-footer {
+  padding: 16px 24px 24px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  border-top: 1px solid #e9ecef;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  pointer-events: auto;
+  outline: none;
+}
+
+.btn-secondary {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 1px solid #ddd;
+}
+
+.btn-secondary:hover {
+  background-color: #e9e9e9;
+  border-color: #999;
+}
+
+.btn-success {
+  background-color: #51cf66;
+  color: white;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #40c057;
+}
+
+.btn-success:active {
+  transform: scale(0.98);
+}

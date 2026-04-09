@@ -1,1 +1,95 @@
-<p>cassa works!</p>
+<header class="cassa-header">
+  <h1>Cassa - Gestione Ordini</h1>
+</header>
+
+<main class="cassa-main">
+  <section class="controls-section">
+    <div class="tavolo-selector">
+      <label for="tavolo-select">Scegli Tavolo:</label>
+      <select id="tavolo-select" (change)="filterTable()" [(ngModel)]="tavolo">
+        <option value="">Tutti i tavoli</option>
+        @for(tav of tavoli; track $index)
+        {
+          <option value="{{tav}}">Tavolo {{tav}}</option>
+        }
+      </select>
+    </div>
+
+    <div class="filters">
+      <label>Filtri:</label>
+      <div class="filter-buttons">
+        <button
+          class="filter-btn"
+          [class.active]="filtroStatoPagamento === 'tutti'"
+          (click)="setFilterPagamento('tutti')">
+          Tutti
+        </button>
+        <button
+          class="filter-btn da-pagare"
+          [class.active]="filtroStatoPagamento === 'da_pagare'"
+          (click)="setFilterPagamento('da_pagare')">
+          Da Pagare
+        </button>
+        <button
+          class="filter-btn pagati"
+          [class.active]="filtroStatoPagamento === 'pagati'"
+          (click)="setFilterPagamento('pagati')">
+          Già Pagati
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="table-section">
+    <table class="table">
+      <thead>
+        <tr>
+          <th (click)="sortByOrdine()" class="sortable">
+            Ordine
+            <span class="sort-indicator" [class.active]="sortOrdine !== null">
+              @if(sortOrdine === 'asc') { ↑ }
+              @if(sortOrdine === 'desc') { ↓ }
+            </span>
+          </th>
+          <th>Tavolo</th>
+          <th>Hotdog</th>
+          <th>Contorno</th>
+          <th>Dolce</th>
+          <th>Pagato</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(ordine of ordiniFiltered; track $index)
+        {
+          <tr [class.pagato]="ordine.pagato == '1'">
+            <td class="idOrdine">{{ordine.idOrd}}</td>
+            <td>{{ordine.idTavolo}}</td>
+            <td><input type="checkbox" [checked]="ordine.hotdog == '1'" [attr.aria-disabled]="isDisabled" (click)="onCheckboxClick($event)"></td>
+            <td><input type="checkbox" [checked]="ordine.patatine == '1' || ordine.peperoni == '1'" [attr.aria-disabled]="isDisabled" (click)="onCheckboxClick($event)"></td>
+            <td><input type="checkbox" [checked]="ordine.dolce == '1'" [attr.aria-disabled]="isDisabled" (click)="onCheckboxClick($event)"></td>
+            <td><input type="checkbox" [checked]="ordine.pagato == '1'" [attr.aria-disabled]="ordine.pagato == '1'" (click)="onCheckboxClick($event)" (click)="openPagamentoModal(ordine)"></td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<!-- Modal di conferma pagamento con Bootstrap -->
+@if(showModalPagamento) {
+  <div class="modal-overlay" (click)="closePagamentoModal()">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h5 class="modal-title">Conferma Pagamento</h5>
+        <button type="button" class="btn-close" (click)="closePagamentoModal()" aria-label="Close">X</button>
+      </div>
+      <div class="modal-body">
+        <p>Confermi il pagamento per l'ordine <strong>{{ordineDaPagare?.idOrd}}</strong> del tavolo <strong>{{ordineDaPagare?.idTavolo}}</strong>?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closePagamentoModal()">Annulla</button>
+        <button type="button" class="btn btn-success" (click)="confirmPagamento()">Conferma</button>
+      </div>
+    </div>
+  </div>
+}
